@@ -113,10 +113,9 @@ function livresFantasyEnAnglais(stock) {
  * @param {array} stock 
  * @returns {object}
  */
-function trouverLivreAvecRide(stock) {
+function livreContenantRide(stock) {
   for (const livre of stock) {
     if (livre.titre.toLowerCase().includes('ride')) {
-      return livre;
     }
   }
   return NULL; 
