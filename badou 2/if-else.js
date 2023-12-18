@@ -129,7 +129,7 @@ console.log('\nListe de tous les titres:');
 listerTousLesTitres(stock);
 
 console.log('\nAjouter un nouveau livre:');
-const stockMaj = ajouterLivre(stock, ' jeux ride', 'badou', 'Genre', 300, 'English', 2002);
+const stockMaj = ajouterLivre(stock, 'ride', 'badou', 'Fantasy', 300, 'English', 2002);
 console.log('Stock mis à jour:', stockMaj);
 
 console.log('\nSupprimer un livre à l\'index 1:');
