@@ -77,7 +77,7 @@ function listerLivresPlusDe300Pages(stock) {
  */
 function livresEntre2000Et2010(stock) {
   for (const book of stock) {
-    if (book.year < 2000 && book.year > 2010) {
+    if (book.year > 2000 && book.year < 2010) {
       console.log(book.title);
     }
   }
