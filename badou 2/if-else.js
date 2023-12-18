@@ -28,7 +28,7 @@ function listerTousLesTitres(stock) {
  * @returns {array} 
  */
 function ajouterLivre(stock, title, author, genre, pages, language, year) {
-  const nouveauLivre = { stock, title, author, genre, pages, language, year };
+  const nouveauLivre = {stock, title, author, genre, pages, language, year };
   stock.push(nouveauLivre);
   return stock;
 }
@@ -55,7 +55,7 @@ function mettreAJourTitre(stock, index, newTitle) {
  */
 function listerLivresEnAnglais(stock) {
   for (const book of stock) {
-    if (book.language.toLowerCase() === 'english') {
+    if (book.language.toLowerCase() == 'english') {
       console.log(book.title);
     }
   }
@@ -65,7 +65,7 @@ function listerLivresEnAnglais(stock) {
  */
 function listerLivresPlusDe300Pages(stock) {
   for (const book of stock) {
-    if (book.pages > 300) {
+    if (book.pages < 300) {
       console.log(book.title);
     }
   }
@@ -77,7 +77,7 @@ function listerLivresPlusDe300Pages(stock) {
  */
 function livresEntre2000Et2010(stock) {
   for (const book of stock) {
-    if (book.year > 2000 && book.year < 2010) {
+    if (book.year < 2000 && book.year > 2010) {
       console.log(book.title);
     }
   }
@@ -88,7 +88,7 @@ function livresEntre2000Et2010(stock) {
  */
 function livresFantasyEnAnglais(stock) {
   for (const book of stock) {
-    if (book.genre.toLowerCase() === 'fantasy' && book.language.toLowerCase() === 'english') {
+    if (book.genre.toLowerCase() == 'fantasy' && book.language.toLowerCase() == 'english') {
       console.log(book.title);
     }
   }
@@ -108,36 +108,32 @@ function livreContenantRide(stock) {
 
 
 
-const stock = livres.slice();
+console.log("Nombre de livres:", nbLivres(books));
 
-console.log('Nombre de livres:', nbLivres(stock));
+console.log("Liste de tous les titres:");
+listerTousLesTitres(books);
 
-console.log('\nListe de tous les titres:');
-listerTousLesTitres(stock);
+console.log("Ajout d'un nouveau livre:");
+ajouterLivre(books,'badouride', 'badou', 'Fantasy', 300, 'English', 2002);
+listerTousLesTitres(books); 
+console.log("Suppression du premier livre:");
+supprimerLivre(books, 0);
+listerTousLesTitres(books); 
 
-console.log('\nAjouter un nouveau livre:');
-const stockMaj = ajouterLivre(stock, 'ride', 'badou', 'Fantasy', 300, 'English', 2002);
-console.log('Stock mis à jour:', stockMaj);
+console.log("Mise à jour du titre du deuxième livre:");
+mettreAJourTitre(books, 1, "Titre Mis à Jour");
+listerTousLesTitres(books); 
 
-console.log('\nSupprimer un livre à l\'index 1:');
-supprimerLivre(stockMaj, 1);
-console.log('Stock mis à jour après suppression:', stockMaj);
+console.log("Liste des livres en anglais:");
+listerLivresEnAnglais(books);
 
-console.log('\nMettre à jour le titre du livre à l\'index 0:');
-mettreAJourTitre(stockMaj, 0, 'Titre mis à jour');
-console.log('Stock mis à jour après mise à jour du titre:', stockMaj);
+console.log("Liste des livres de plus de 300 pages:");
+listerLivresPlusDe300Pages(books);
 
-console.log('\nListe des livres en anglais:');
-listerLivresEnAnglais(stockMaj);
+console.log("Liste des livres entre 2000 et 2010:");
+livresEntre2000Et2010(books);
 
-console.log('\nListe des livres avec plus de 300 pages:');
-listerLivresPlusDe300Pages(stockMaj);
+console.log("Liste des livres de fantasy en anglais:");
+livresFantasyEnAnglais(books);
 
-console.log('\nLivres publiés entre 2000 et 2010:');
-console.log(livresEntre2000Et2010(stockMaj));
-
-console.log('\nLivres Fantasy en anglais:');
-console.log(livresFantasyEnAnglais(stockMaj));
-
-console.log('\nLivre contenant "ride" dans le titre:');
-console.log(livreContenantRide(stockMaj));
+console.log("Livre contenant 'ride':", livreContenantRide(books));
