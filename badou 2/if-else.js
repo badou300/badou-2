@@ -30,7 +30,6 @@ function listerTousLesTitres(stock) {
  */
 function ajouterLivre(stock, titre, auteur, genre, pages, langue, annee) {
   const nouveauLivre = {
-    stock,
     auteur,
     titre,
     pages,
@@ -62,9 +61,9 @@ function mettreAJourTitre(stock, index, nouveauTitre) {
 /**
  * @param {array} stock 
  */
-function listerLivresAnglais(stock) {
+function listerLivresEnglais(stock) {
   for (const livre of stock) {
-    if (livre.langue === 'Anglais') {
+    if (livre.langue === 'Englais') {
       console.log(livre.titre);
     }
   }
@@ -75,7 +74,7 @@ function listerLivresAnglais(stock) {
  */
 function listerLivresPlusDe300Pages(stock) {
   for (const livre of stock) {
-    if (livre.pages = 300) {
+    if (livre.pages < 300) {
       console.log(livre.titre);
     }
   }
@@ -102,7 +101,7 @@ function livresEntre2000Et2010(stock) {
 function livresFantasyEnAnglais(stock) {
   const result = [];
   for (const livre of stock) {
-    if (livre.genre == 'Fantasy' && livre.langue == 'Anglais') { 
+    if (livre.genre == 'Fantasy' && livre.langue == 'Englais') { 
       result.push(livre);
     }
   }
@@ -118,7 +117,7 @@ function livreContenantRide(stock) {
     if (livre.titre.toLowerCase().includes('ride')) {
     }
   }
-  return NULL; 
+  return Null; 
 }
 
 const stock = livres.slice();
@@ -141,7 +140,7 @@ mettreAJourTitre(stockMaj, 0, 'Titre mis à jour');
 console.log('Stock mis à jour après mise à jour du titre:', stockMaj);
 
 console.log('\nListe des livres en anglais:');
-listerLivresEnAnglais(stockMaj);
+listerLivresEnglais(stockMaj);
 
 console.log('\nListe des livres avec plus de 300 pages:');
 listerLivresPlusDe300Pages(stockMaj);
