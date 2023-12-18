@@ -1,5 +1,4 @@
-
-const livres = require('./library.json');
+const books = require('./library.json');
 
 /**
  * @param {array} stock 
@@ -13,69 +12,61 @@ function nbLivres(stock) {
  * @param {array} stock 
  */
 function listerTousLesTitres(stock) {
-  stock.forEach((livre) => {
-    console.log(livre.title);
+  stock.forEach(book => {
+    console.log(book.title);
   });
 }
 
 /**
  * @param {array} stock 
- * @param {string} titre
- * @param {string} auteur 
- * @param {string} genre
+ * @param {string} title 
+ * @param {string} author 
+ * @param {string} genre 
  * @param {number} pages 
- * @param {string} langue
- * @param {number} annee 
+ * @param {string} language 
+ * @param {number} year 
  * @returns {array} 
  */
-function ajouterLivre(stock, titre, auteur, genre, pages, langue, annee) {
-  const nouveauLivre = {
-    auteur,
-    titre,
-    pages,
-    genre,
-    langue,
-    annee
-  };
+function ajouterLivre(stock, title, author, genre, pages, language, year) {
+  const nouveauLivre = { stock, title, author, genre, pages, language, year };
   stock.push(nouveauLivre);
   return stock;
 }
 
 /**
  * @param {array} stock 
- * @param {number} index
+ * @param {number} index 
  */
 function supprimerLivre(stock, index) {
   stock.splice(index, 1);
 }
 
 /**
- * @param {array} stock
+ * @param {array} stock 
  * @param {number} index 
- * @param {string} nouveauTitre 
+ * @param {string} newTitle 
  */
-function mettreAJourTitre(stock, index, nouveauTitre) {
-  stock[index].titre = nouveauTitre;
+function mettreAJourTitre(stock, index, newTitle) {
+  stock[index].title = newTitle;
 }
 
 /**
  * @param {array} stock 
  */
-function listerLivresEnglais(stock) {
-  for (const livre of stock) {
-    if (livre.langue === 'Englais') {
-      console.log(livre.titre);
+function listerLivresEnAnglais(stock) {
+  for (const book of stock) {
+    if (book.language.toLowerCase() === 'english') {
+      console.log(book.title);
     }
   }
 }
-
 /**
  * @param {array} stock 
  */
 function listerLivresPlusDe300Pages(stock) {
-  for (const livre of stock) {
-    if (livre.pages < 300) {
-      console.log(livre.titre);
+  for (const book of stock) {
+    if (book.pages > 300) {
+      console.log(book.title);
     }
   }
 }
@@ -85,40 +76,37 @@ function listerLivresPlusDe300Pages(stock) {
  * @returns {array} 
  */
 function livresEntre2000Et2010(stock) {
-  const result = [];
-  for (const livre of stock) {
-    if (livre.annee > 2000 && livre.annee <= 2010) { 
-      result.push(livre);
+  for (const book of stock) {
+    if (book.year > 2000 && book.year < 2010) {
+      console.log(book.title);
     }
   }
-  return result;
 }
-
 /**
- * @param {array} stock
+ * @param {array} stock 
  * @returns {array} 
  */
 function livresFantasyEnAnglais(stock) {
-  const result = [];
-  for (const livre of stock) {
-    if (livre.genre == 'Fantasy' && livre.langue == 'Englais') { 
-      result.push(livre);
+  for (const book of stock) {
+    if (book.genre.toLowerCase() === 'fantasy' && book.language.toLowerCase() === 'english') {
+      console.log(book.title);
     }
   }
-  return result;
 }
-
 /**
  * @param {array} stock 
- * @returns {object}
+ * @returns {object|null} 
  */
 function livreContenantRide(stock) {
-  for (const livre of stock) {
-    if (livre.titre.toLowerCase().includes('ride')) {
+  for (const book of stock) {
+    if (book.title.toLowerCase().includes('ride')) {
+      return book;
     }
   }
-  return Null; 
+  return null;
 }
+
+
 
 const stock = livres.slice();
 
@@ -140,7 +128,7 @@ mettreAJourTitre(stockMaj, 0, 'Titre mis à jour');
 console.log('Stock mis à jour après mise à jour du titre:', stockMaj);
 
 console.log('\nListe des livres en anglais:');
-listerLivresEnglais(stockMaj);
+listerLivresEnAnglais(stockMaj);
 
 console.log('\nListe des livres avec plus de 300 pages:');
 listerLivresPlusDe300Pages(stockMaj);
